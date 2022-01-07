@@ -42,7 +42,6 @@ const labelBalance = document.querySelector(".balance__value");
 const labelSumIn = document.querySelector(".summary__value--in");
 const labelSumOut = document.querySelector(".summary__value--out");
 const labelSumInterest = document.querySelector(".summary__value--interest");
-const labelTimer = document.querySelector(".timer");
 
 const containerApp = document.querySelector(".app");
 const containerMovements = document.querySelector(".movements");
@@ -52,6 +51,7 @@ const btnTransfer = document.querySelector(".form__btn--transfer");
 const btnLoan = document.querySelector(".form__btn--loan");
 const btnClose = document.querySelector(".form__btn--close");
 const btnSort = document.querySelector(".btn--sort");
+const btnLogOut = document.querySelector(".logout");
 
 const inputLoginUsername = document.querySelector(".login__input--user");
 const inputLoginPin = document.querySelector(".login__input--pin");
@@ -64,7 +64,7 @@ const inputClosePin = document.querySelector(".form__input--pin");
 btnLogin.addEventListener(`click`, function (e) {
   e.preventDefault();
   console.log(`hi`);
-  LogIn(accounts);
+  logIn(accounts);
 });
 btnTransfer.addEventListener(`click`, function (e) {
   e.preventDefault();
@@ -99,6 +99,11 @@ btnSort.addEventListener(`click`, function (e) {
     sortDescending();
     btnSort.textContent = `\u2193 SORT`;
   }
+});
+btnLogOut.addEventListener(`click`, function (e) {
+  e.preventDefault();
+  console.log(`logout`);
+  logOut();
 });
 
 function displayMovements(movements) {
@@ -159,7 +164,7 @@ function updateNumbers(movements) {
   })();
 }
 
-function LogIn(accounts) {
+function logIn(accounts) {
   currentAccount = accounts.find(
     (user) =>
       user.username == inputLoginUsername.value &&
@@ -167,9 +172,14 @@ function LogIn(accounts) {
   );
   console.log(currentAccount);
   if (currentAccount) {
-    document.querySelector(`.app`).style.opacity = `1`;
-    document.querySelector(`.welcome`).textContent = `Welcome`;
+    inputLoginUsername.value = ``;
+    inputLoginPin.value = ``;
+    labelWelcome.textContent = `Log in to get started`;
+    containerApp.classList.remove(`hidden`);
+    document.querySelector(`.login-container`).classList.add(`hidden`);
     update();
+  } else {
+    alert(`no account found!`);
   }
 }
 function update() {
@@ -204,7 +214,9 @@ function closeAccount(account, pin) {
   if (account == currentAccount.username && pin == currentAccount.pin) {
     accounts.splice(accounts.indexOf(currentAccount), 1);
     console.log(accounts);
-    containerApp.style.opacity = `0`;
+    containerApp.classList.add("hidden");
+    document.querySelector(`.login-container`).classList.remove(`hidden`);
+    currentAccount = undefined;
   } else {
     alert(`No account found!`);
   }
@@ -234,4 +246,10 @@ function sortAscending() {
     }
   });
   displayMovements(newMovements);
+}
+
+function logOut() {
+  currentAccount = undefined;
+  document.querySelector(`.app`).classList.add(`hidden`);
+  document.querySelector(`.login-container`).classList.remove(`hidden`);
 }

@@ -16,15 +16,17 @@
   </head>
   <body>
     <!-- TOP NAVIGATION -->
-    <nav>
-      <p class="welcome">Log in to get started</p>
+    <div class="login-container">
       <img src="icon.png" alt="Logo" class="logo" />
+      <p class="welcome">Log in to get started</p>
+      <br />
       <form class="login">
         <input
           type="text"
           placeholder="user"
           class="login__input login__input--user"
         />
+        <br />
         <!-- In practice, use type="password" -->
         <input
           type="text"
@@ -32,11 +34,12 @@
           maxlength="4"
           class="login__input login__input--pin"
         />
-        <button class="login__btn">&rarr;</button>
+        <br />
+        <button class="login__btn">Enter</button>
       </form>
-    </nav>
+    </div>
 
-    <main class="app">
+    <main class="app hidden">
       <!-- BALANCE -->
       <div class="balance">
         <div>
@@ -114,9 +117,7 @@
       </div>
 
       <!-- LOGOUT TIMER -->
-      <p class="logout-timer">
-        You will be logged out in <span class="timer">05:00</span>
-      </p>
+      <form><btn class="logout">Logout</btn></form>
     </main>
 
     <!-- <footer>

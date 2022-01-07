@@ -33,8 +33,17 @@ nav {
   height: 5.25rem;
 }
 
+.login-container {
+  align-content: center;
+  text-align: center;
+  margin: 25%;
+  background-color: rgb(239, 239, 229);
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 .login {
-  display: flex;
+  text-align: center;
+  align-content: center;
 }
 
 .login__input {
@@ -45,7 +54,7 @@ nav {
   text-align: center;
   width: 12rem;
   border-radius: 10rem;
-  margin-right: 1rem;
+  margin: 1rem;
   color: inherit;
   border: 1px solid #fff;
   transition: all 0.3s;
@@ -62,11 +71,15 @@ nav {
 
 .login__btn {
   border: none;
-  background: none;
-  font-size: 2.2rem;
+  background: linear-gradient(to top left, #39b385, #9be15d);
+  border-radius: 10rem;
+  font-size: 1.7rem;
+  padding-left: 15px;
+  padding-right: 15px;
   color: inherit;
   cursor: pointer;
   transition: all 0.3s;
+  margin: 1rem;
 }
 
 .login__btn:hover,
@@ -88,8 +101,11 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
-  opacity: 0;
   transition: all 1s;
+}
+
+.hidden {
+  display: none;
 }
 
 .balance {
@@ -279,11 +295,16 @@ h2 {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-.logout-timer {
-  padding: 0 0.3rem;
-  margin-top: 1.9rem;
-  text-align: right;
+.logout {
+  background-color: #f5465d;
+  color: #eee;
+  border-radius: 10rem;
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem;
   font-size: 1.25rem;
+  width: 10rem;
+  float: right;
 }
 
 .timer {
